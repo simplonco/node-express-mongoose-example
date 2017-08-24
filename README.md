@@ -27,3 +27,7 @@ Créer les routes
   - créer un formulaire pour ajouter un learner
   - sauvegarder le learner dans la db
   - rediriger vers la liste des apprenants
+
+3. UPDATE
+
+4. DELETE
