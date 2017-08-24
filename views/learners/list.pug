@@ -1,0 +1,7 @@
+extends ../homepage
+
+block content
+  h1 Liste des apprenant.e.s
+  ul
+    each learner in learners
+      li #{learner.firstName} #{learner.lastName}
