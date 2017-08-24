@@ -7,7 +7,5 @@ block content
     each learner in learners
       li
         a(href=`/learners/${learner.id}`) #{learner.firstName} #{learner.lastName}
-        a(href='#') E
-        //- form(action=`/learner/${learner.id}`, method='post')
-        //-   button(type='submit') X
+        a(href=`/learners/${learner.id}/edit`) E
         a(href=`/learners/${learner.id}/delete`) X

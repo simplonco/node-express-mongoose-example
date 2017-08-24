@@ -33,7 +33,21 @@ router.get('/:id', (req, res) => {
 
 // Supprimer un learner
 router.get('/:id/delete', (req, res) => {
-  Learner.findByIdAndRemove(req.params.id, (error, learner) => {
+  Learner.findByIdAndRemove(req.params.id, (error) => {
+    res.redirect('/learners');
+  });
+});
+
+// Afficher le formulaire d'édition d'un learner
+router.get('/:id/edit', (req, res) => {
+  Learner.findById(req.params.id, (error, learner) => {
+    res.render('learners/edit', { learner });
+  });
+});
+
+// Update un learner à partir des données récupérées du formulaire d'édition
+router.post('/:id/edit', (req, res) => {
+  Learner.findByIdAndUpdate(req.params.id, req.body, (error) => {
     res.redirect('/learners');
   });
 });

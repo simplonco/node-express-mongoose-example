@@ -1,8 +1,9 @@
 extends ../homepage
 
 block content
-  form(action='/learners/edit', method='POST')
-    input(type='text', name='firstName', placeholder='First Name')
-    input(type='text', name='lastName', placeholder='Last Name')
-    input(type='text', name='age', placeholder='Age')
-    button(type='submit') AJOUTER
+  form(action=`/learners/${learner.id}/edit`, method='POST')
+    //- input(type='hidden', name='_method', value='PUT')
+    input(type='text', name='firstName', value=learner.firstName)
+    input(type='text', name='lastName', value=learner.lastName)
+    input(type='text', name='age', value=learner.age)
+    button(type='submit') EDITER
