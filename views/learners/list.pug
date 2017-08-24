@@ -1,11 +1,13 @@
 extends ../homepage
 
 block content
-  a(href='/new') Ajouter un apprenant
+  a(href='/learners/new') Ajouter un apprenant
   h1 Liste des apprenant.e.s
   ul
     each learner in learners
       li
-        a(href=`/learner/${learner.id}`) #{learner.firstName} #{learner.lastName}
+        a(href=`/learners/${learner.id}`) #{learner.firstName} #{learner.lastName}
         a(href='#') E
-        a(href=`/learner/${learner.id}/delete`) X
+        //- form(action=`/learner/${learner.id}`, method='post')
+        //-   button(type='submit') X
+        a(href=`/learners/${learner.id}/delete`) X

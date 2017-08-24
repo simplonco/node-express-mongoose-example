@@ -8,6 +8,6 @@ router.get('/', (req, res) => {
   res.redirect('/learners');
 });
 
-router.use(learners);
+router.use('/learners', learners);
 
 module.exports = router;

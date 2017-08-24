@@ -4,9 +4,8 @@ const Learner = require('../models/learners.js');
 
 const router = express.Router();
 
-router.get('/learners', (req, res) => {
+router.get('/', (req, res) => {
   Learner.find((error, learners) => {
-    console.log(learners);
     res.render('learners/list', { learners });
   });
 });
@@ -22,9 +21,15 @@ router.post('/create', (req, res) => {
   });
 });
 
-router.get('/learner/:id', (req, res) => {
+router.get('/:id', (req, res) => {
   Learner.findById(req.params.id, (error, learner) => {
     res.render('learners/learner', { learner });
+  });
+});
+
+router.get('/:id/delete', (req, res) => {
+  Learner.findByIdAndRemove(req.params.id, (error, learner) => {
+    res.redirect('/learners');
   });
 });
 
