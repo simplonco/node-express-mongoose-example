@@ -5,7 +5,7 @@ const learners = require('./routes/learners');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.render('homepage');
+  res.redirect('/learners');
 });
 
 router.use(learners);

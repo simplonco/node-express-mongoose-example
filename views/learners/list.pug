@@ -1,7 +1,11 @@
 extends ../homepage
 
 block content
+  a(href='/new') Ajouter un apprenant
   h1 Liste des apprenant.e.s
   ul
     each learner in learners
-      li #{learner.firstName} #{learner.lastName}
+      li
+        a(href=`/learner/${learner.id}`) #{learner.firstName} #{learner.lastName}
+        a(href='#') E
+        a(href=`/learner/${learner.id}/delete`) X
