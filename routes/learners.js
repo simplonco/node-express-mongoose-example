@@ -1,8 +1,20 @@
+const path = require('path');
 const express = require('express');
+const multer = require('multer');
 
 const Learner = require('../models/learners.js');
 
 const router = express.Router();
+
+const storage = multer.diskStorage({
+  destination: (request, file, callback) => {
+    callback(null, path.resolve('public', 'uploads'));
+  },
+  filename: (request, file, callback) => {
+    callback(null, `${request.body.firstName.toLowerCase()}-${request.body.lastName.toLowerCase()}.${file.originalname.split('.')[1]}`);
+  }
+});
+const upload = multer({ storage });
 
 // Afficher tous les learners
 router.get('/', (req, res) => {
@@ -17,8 +29,9 @@ router.get('/new', (req, res) => {
 });
 
 // Ajouter un learner dans la db à partir des données du formulaire
-router.post('/create', (req, res) => {
+router.post('/create', upload.single('photo'), (req, res) => {
   const newLearner = new Learner(req.body);
+  newLearner.photo = `/${req.file.destination.split('/').pop()}/${req.file.filename}`;
   newLearner.save((error, learner) => {
     res.redirect('/learners');
   });

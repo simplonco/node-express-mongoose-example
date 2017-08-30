@@ -1,8 +1,9 @@
 extends ../homepage
 
 block content
-  form(action='/learners/create', method='POST')
+  form(action='/learners/create', method='POST', enctype='multipart/form-data')
     input(type='text', name='firstName', placeholder='First Name')
     input(type='text', name='lastName', placeholder='Last Name')
     input(type='text', name='age', placeholder='Age')
+    input(type='file', name='photo')
     button(type='submit') AJOUTER

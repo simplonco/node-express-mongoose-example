@@ -6,6 +6,7 @@ block content
   ul
     each learner in learners
       li
+        img(src=learner.photo)
         a(href=`/learners/${learner.id}`) #{learner.firstName} #{learner.lastName}
         a(href=`/learners/${learner.id}/edit`) E
         a(href=`/learners/${learner.id}/delete`) X
